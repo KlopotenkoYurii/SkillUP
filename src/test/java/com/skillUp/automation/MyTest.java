@@ -7,23 +7,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class MyTest extends TestRunner {
-    WebDriver driver;
 
     @Test
-    public void test2() {
-
-        driver.get(URL);
+    public void test1() {
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, "title is wrong");
-
-        //Assert.assertTrue(driver.findElement(By.id("scpl1")).click();
-        //System.out.print("This is search2 element");
-
-
+        String expectedTitle = "Bing";
+        assertEquals(expectedTitle, actualTitle);
+        if (driver.getTitle().contains(expectedTitle))
+            System.out.println("Name of tittle is correct! " + expectedTitle + " = " + actualTitle);
+        else
+            System.out.println("Title is not correct");
+    }
+    @Test
+    public void test2(){
+        String url = "https://www.bing.com/";
+        System.out.println("Our URL: " + url);
+        if (url.contains("/servererror/"))
+            System.out.println("title is wrong");
+        else
+            System.out.println("URL does`nt contain error");
     }
 }
